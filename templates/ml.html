@@ -1,0 +1,199 @@
+{% extends "base.html" %}
+{% block content %}
+
+<div class="ml-section">
+
+  <h1 class="eda-title">Machine Learning Models</h1>
+
+  <p>
+    After completing EDA, several machine learning models were trained on the synthetic claims dataset 
+    to predict whether a medical claim will be approved or denied before submission. If denied what will be the reason. In this project, the dataset contains an imbalance between 
+    Approved and Denied claims (approximately 80% Approved vs. 20% Denied). Using accuracy alone would be misleading, as a model could appear highly accurate simply by predicting 
+    most claims as Approved. To better evaluate model performance on both classes—especially the minority class (Denied)—the F1-Score was used as the primary metric. 
+    F1-Score balances Precision (how many predicted Denied were correct) and Recall (how many actual Denied claims were detected), providing a more reliable assessment for 
+    imbalanced classification problems such as medical claim denials.
+    The goal is to help healthcare providers identify potential denials and address issues proactively.
+  </p>
+  <p>
+    We need two models one for predicting whether the claim will be approved or rejected and the other one is for predicting the denial reason if the claim is rejected.
+  </p>
+  <h2>Model for predicting the Claim status (Approved/Rejected) </h2>
+  <p>
+   Inorder to overcome the class imbalance the technique SMOTE is used. Used different models for training and the best model based on F1 score was chosed. 
+    The following models were trained and evaluated:
+  </p>
+  <ul>
+    <li>Random Forest</li>
+    <li>Logistic Regression</li>
+    <li>Decision Tree</li>
+    <li>XGBoost</li>
+  </ul>
+
+  <h3>Model Comparison Results</h3>
+  <p>
+    Below is the performance of each model based on F1-score, precision, and recall.
+  </p>
+
+  <table style="width: 100%; border-collapse: collapse; text-align: center;">
+    <thead>
+      <tr style="background-color: #f2f2f2;">
+        <th style="border: 1px solid #ccc; padding: 8px;">Model</th>
+        <th style="border: 1px solid #ccc; padding: 8px;">Accuracy</th>
+        <th style="border: 1px solid #ccc; padding: 8px;">Precision</th>
+        <th style="border: 1px solid #ccc; padding: 8px;">Recall</th>
+        <th style="border: 1px solid #ccc; padding: 8px;">F1-Score</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td style="border: 1px solid #ccc; padding: 8px;">Random Forest</td>
+        <td style="border: 1px solid #ccc; padding: 8px;">0.6575%</td>
+        <td style="border: 1px solid #ccc; padding: 8px;">0.6759%</td>
+        <td style="border: 1px solid #ccc; padding: 8px;">0.6575%</td>
+        <td style="border: 1px solid #ccc; padding: 8px;">0.6662%</td>
+      </tr>
+      <tr>
+        <td style="border: 1px solid #ccc; padding: 8px;">Logistic Regression</td>
+        <td style="border: 1px solid #ccc; padding: 8px;">0.5490%</td>
+        <td style="border: 1px solid #ccc; padding: 8px;">0.6832%</td>
+        <td style="border: 1px solid #ccc; padding: 8px;">0.5490%</td>
+        <td style="border: 1px solid #ccc; padding: 8px;">0.5930%</td>
+      </tr>
+      <tr>
+        <td style="border: 1px solid #ccc; padding: 8px;">Decision Tree</td>
+        <td style="border: 1px solid #ccc; padding: 8px;">0.6100%</td>
+        <td style="border: 1px solid #ccc; padding: 8px;">0.6836%</td>
+        <td style="border: 1px solid #ccc; padding: 8px;">0.6100%</td>
+        <td style="border: 1px solid #ccc; padding: 8px;">0.6396%</td>
+      </tr>
+      <tr>
+        <td style="border: 1px solid #ccc; padding: 8px;">XGBoost</td>
+        <td style="border: 1px solid #ccc; padding: 8px;">0.6485%</td>
+        <td style="border: 1px solid #ccc; padding: 8px;">0.6708%</td>
+        <td style="border: 1px solid #ccc; padding: 8px;">0.6485%</td>
+        <td style="border: 1px solid #ccc; padding: 8px;">0.6590%</td>
+      </tr>
+      
+    </tbody>
+  </table>
+
+  <h3>Best Performing Model</h3>
+  <p>
+    The Random Forest Classifier demonstrated the best F1-Score and overall balanced performance on the test data. 
+    It was therefore selected as the final model for predicting the claim status. This model was exported and deployed 
+    as part of the bulk and single prediction web interface.
+  </p>
+
+  <h2>Model for predicting the Denial reason </h2>
+  <p> A seperate model is used for predicting the Denial reason if the claim is predicted to be rejected. The following models are trained
+    and evaluated and the best model based on F1 score is selected.
+  </p>
+  <ul>
+    <li>Random Forest</li>
+    <li>Logistic Regression</li>
+    <li>Decision Tree</li>
+    <li>XGBoost</li>
+  </ul>
+
+  <h3>Model Comparison Results</h3>
+  <p>
+    Below is the performance of each model based on F1-score, precision, and recall.
+  </p>
+
+  <table style="width: 100%; border-collapse: collapse; text-align: center;">
+    <thead>
+      <tr style="background-color: #f2f2f2;">
+        <th style="border: 1px solid #ccc; padding: 8px;">Model</th>
+        <th style="border: 1px solid #ccc; padding: 8px;">Accuracy</th>
+        <th style="border: 1px solid #ccc; padding: 8px;">Precision</th>
+        <th style="border: 1px solid #ccc; padding: 8px;">Recall</th>
+        <th style="border: 1px solid #ccc; padding: 8px;">F1-Score</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td style="border: 1px solid #ccc; padding: 8px;">Random Forest</td>
+        <td style="border: 1px solid #ccc; padding: 8px;">0.1439%</td>
+        <td style="border: 1px solid #ccc; padding: 8px;">0.0999%</td>
+        <td style="border: 1px solid #ccc; padding: 8px;">0.1439%</td>
+        <td style="border: 1px solid #ccc; padding: 8px;">0.1111%</td>
+      </tr>
+      <tr>
+        <td style="border: 1px solid #ccc; padding: 8px;">Logistic Regression</td>
+        <td style="border: 1px solid #ccc; padding: 8px;">0.2333%</td>
+        <td style="border: 1px solid #ccc; padding: 8px;">0.0671%</td>
+        <td style="border: 1px solid #ccc; padding: 8px;">0.2333%</td>
+        <td style="border: 1px solid #ccc; padding: 8px;">0.0948%</td>
+      </tr>
+      <tr>
+        <td style="border: 1px solid #ccc; padding: 8px;">Decision Tree</td>
+        <td style="border: 1px solid #ccc; padding: 8px;">0.0844%</td>
+        <td style="border: 1px solid #ccc; padding: 8px;">0.0898%</td>
+        <td style="border: 1px solid #ccc; padding: 8px;">0.0844%</td>
+        <td style="border: 1px solid #ccc; padding: 8px;">0.0868%</td>
+      </tr>
+      <tr>
+        <td style="border: 1px solid #ccc; padding: 8px;">XGBoost</td>
+        <td style="border: 1px solid #ccc; padding: 8px;">0.1241%</td>
+        <td style="border: 1px solid #ccc; padding: 8px;">0.0943%</td>
+        <td style="border: 1px solid #ccc; padding: 8px;">0.1241%</td>
+        <td style="border: 1px solid #ccc; padding: 8px;">0.1045%</td>
+      </tr>
+      
+    </tbody>
+  </table>
+  <p>To improve the model’s ability to accurately predict denial reasons, the original denial reasons were grouped into five major 
+    categories based on their frequency and operational relevance. This grouping helps the model focus on the most impactful patterns 
+    and reduces noise caused by rare categories. After grouping, the model performance improved with higher F1-scores is used for denial reason prediction. 
+    The table below shows the performance of various classifiers after this grouping strategy was applied.</p>
+    <table style="width: 100%; border-collapse: collapse; text-align: center;">
+    <thead>
+      <tr style="background-color: #f2f2f2;">
+        <th style="border: 1px solid #ccc; padding: 8px;">Model</th>
+        <th style="border: 1px solid #ccc; padding: 8px;">Accuracy</th>
+        <th style="border: 1px solid #ccc; padding: 8px;">Precision</th>
+        <th style="border: 1px solid #ccc; padding: 8px;">Recall</th>
+        <th style="border: 1px solid #ccc; padding: 8px;">F1-Score</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td style="border: 1px solid #ccc; padding: 8px;">Random Forest</td>
+        <td style="border: 1px solid #ccc; padding: 8px;">0.3548%</td>
+        <td style="border: 1px solid #ccc; padding: 8px;">0.2447%</td>
+        <td style="border: 1px solid #ccc; padding: 8px;">0.3548%</td>
+        <td style="border: 1px solid #ccc; padding: 8px;">0.2676%</td>
+      </tr>
+      <tr>
+        <td style="border: 1px solid #ccc; padding: 8px;">Logistic Regression</td>
+        <td style="border: 1px solid #ccc; padding: 8px;">0.4144%</td>
+        <td style="border: 1px solid #ccc; padding: 8px;">0.1717%</td>
+        <td style="border: 1px solid #ccc; padding: 8px;">0.4144%</td>
+        <td style="border: 1px solid #ccc; padding: 8px;">0.2428%</td>
+      </tr>
+      <tr>
+        <td style="border: 1px solid #ccc; padding: 8px;">Decision Tree</td>
+        <td style="border: 1px solid #ccc; padding: 8px;">0.2382%</td>
+        <td style="border: 1px solid #ccc; padding: 8px;">0.2582%</td>
+        <td style="border: 1px solid #ccc; padding: 8px;">0.2382%</td>
+        <td style="border: 1px solid #ccc; padding: 8px;">0.2471%</td>
+      </tr>
+      <tr>
+        <td style="border: 1px solid #ccc; padding: 8px;">XGBoost</td>
+        <td style="border: 1px solid #ccc; padding: 8px;">0.3251%</td>
+        <td style="border: 1px solid #ccc; padding: 8px;">0.2570%</td>
+        <td style="border: 1px solid #ccc; padding: 8px;">0.3251%</td>
+        <td style="border: 1px solid #ccc; padding: 8px;">0.2794%</td>
+      </tr>
+      
+    </tbody>
+  </table>
+<p>Based on the F1-Score, the XGBoost model outperformed the other classifiers for predicting grouped denial reasons. Therefore, XGBoost was selected as the final model for denial reason prediction.
+
+</p>
+
+<p>Overall, the machine learning models demonstrated good potential in predicting both claim status and denial reasons using the synthetic claims dataset. The Random Forest model was selected for claim approval/denial prediction, while XGBoost was chosen for denial reason classification. These models have been integrated into the project’s web interface for both single and bulk predictions, 
+    providing a practical decision-support tool to help healthcare providers anticipate and manage claim denials more effectively.</p>
+</div>
+
+{% endblock %}

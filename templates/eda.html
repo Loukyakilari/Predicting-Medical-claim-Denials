@@ -1,0 +1,95 @@
+{% extends "base.html" %}
+{% block content %}
+<div class="eda-section">
+
+  <h1 class="eda-title">Exploratory Data Analysis</h1>
+      <p>
+        The dataset contains <strong>10,000 synthetic medical claims</strong> with various features such as patient demographics, 
+        procedure codes, diagnosis codes, provider details, and claim outcomes. EDA helps us uncover hidden patterns and gain 
+        insight into the data before building prediction models.
+      </p>
+
+      <h3>Claims Approval vs Denial Rate</h3>
+ <div style="display: flex; align-items: flex-start; gap: 30px; flex-wrap: wrap; margin-bottom: 40px;">
+  <!-- Left: Image -->
+  <div style="flex: 0 0 250px;">
+    <img src="{{ url_for('static', filename='Images/claim_status_distribution.png') }}" alt="Claims Pie Chart" style="width: 100%; height: auto; border-radius: 8px; box-shadow: 0 2px 6px rgba(0,0,0,0.1);"
+    >
+  </div>
+
+  <!-- Right: Description -->
+  <div style="flex: 1; min-width: 250px; font-size: 1.05rem; line-height: 1.6; color: #2c3e50;">
+    
+    <p>
+      This pie chart shows that 79.9% of medical claims were approved and only 20.1% were denied.
+      So out of 10,000 claims 7,989 claims are approved and 2,011 claims are denied. This indicates there is a class imbalance which need to be addressed during model training.
+    </p>
+  </div>
+</div>
+
+     <h3>Breakdown of claims Denial by operational area</h3>
+ <div style="display: flex; align-items: flex-start; gap: 30px; flex-wrap: wrap; margin-bottom: 40px;">
+  <!-- Left: Image -->
+  <div style="flex: 0 0 250px;">
+    <img src="{{ url_for('static', filename='Images/claimdenialcategory.png') }}" alt="Claims Pie Chart" style="width: 100%; height: auto; border-radius: 8px; box-shadow: 0 2px 6px rgba(0,0,0,0.1);">
+  </div>
+
+  <!-- Right: Description -->
+  <div style="flex: 1; min-width: 250px; font-size: 1.05rem; line-height: 1.6; color: #2c3e50;">
+    
+    <p>
+      This pie chart presents the operational breakdown of claim denials across the healthcare revenue cycle. A majority of denials—approximately 43.1%—originate 
+      in the Front Office, typically due to issues like incomplete registration, eligibility errors, or missing prior authorizations. The Middle Office contributes 
+      to 31% of denials, often caused by documentation gaps, incorrect coding, or delays in clinical review. The remaining 25.9% are associated with Back Office 
+      operations, where common issues include duplicate claims, coordination of benefits errors, and exceeding timely filing limits. These insights highlight the 
+      need for end-to-end process improvement to reduce preventable denials and improve revenue efficiency.
+    </p>
+  </div>
+</div>
+<h3>Distribution of Denial reasons</h3>
+ <div style="display: flex; align-items: flex-start; gap: 60px; flex-wrap: wrap; margin-bottom: 60px;">
+  <!-- Left: Image -->
+  <div style="flex: 0 0 400px;">
+    <img src="{{ url_for('static', filename='Images/denialreasons.png') }}" alt="Claims Pie Chart" style="width: 100%; height: auto; border-radius: 8px; box-shadow: 0 2px 6px rgba(0,0,0,0.1);">
+  </div>
+
+  <!-- Right: Description -->
+  <div style="flex: 1; min-width: 250px; font-size: 1.05rem; line-height: 1.6; color: #2c3e50;">
+    
+    <p>
+      This bar chart displays the distribution of specific denial reasons among all denied claims in the dataset. The most common reason for denial is Incomplete 
+      Registration Data, indicating that many claims fail due to missing or invalid patient information captured at the front desk. Other frequent causes include 
+      Eligibility Verification Failure, Inadequate Clinical Documentation, and Duplicate Claim Submission, highlighting issues that span both the front and 
+      middle office. Less frequent but still important are denials caused by Incorrect Procedure Codes, Missing Prior Authorization, and Exceeded Timely Filing Limits. 
+      These insights emphasize the need for improved processes in data entry, clinical documentation, and payer coordination to reduce claim denials and enhance revenue 
+      cycle performance.
+    </p>
+  </div>
+</div>
+
+
+        <h3>Distribution of claims by Medical specialty</h3>
+               <div style="display: flex; align-items: flex-start; gap: 60px; flex-wrap: wrap; margin-bottom: 60px;">
+                 <!-- Left: Image -->
+                 <div style="flex: 0 0 400px;">
+                    <img src="{{ url_for('static', filename='Images/specialty.png') }}" alt="Claims Pie Chart" style="width: 100%; height: auto; border-radius: 8px; box-shadow: 0 2px 6px rgba(0,0,0,0.1);">
+                 </div>
+
+              <!-- Right: Description -->
+             <div style="flex: 1; min-width: 300px; font-size: 1.05rem; line-height: 1.6; color: #2c3e50;">
+    
+             <p>
+                This bar chart illustrates the distribution of claims across the top 15 medical specialties. Specialties like Plastic Surgery, Emergency Medicine, and Radiology account for a larger share of total 
+                submitted claims in this synthetic dataset. This reflects the frequency of procedures typically performed in these high-volume areas, which may be subject to higher denial scrutiny based on clinical complexity,
+                coding accuracy, and payer policies. Understanding specialty-wise claim patterns helps prioritize targeted denial management efforts in high-volume departments.
+                  </div>
+              </div>
+
+      
+
+
+    </div>
+
+
+
+{% endblock %}

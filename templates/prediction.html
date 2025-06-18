@@ -1,0 +1,57 @@
+{% extends "base.html" %}
+{% block content %}
+
+<div class="prediction-section" style="padding: 2rem;">
+
+  <h1 class="eda-title">Prediction</h1>
+
+  <p style="font-size: 1.05rem; line-height: 1.7;">
+    This feature allows healthcare users to upload a batch of new medical claims (CSV file).
+    The system will automatically predict whether each claim will be <strong>Approved</strong> or <strong>Denied</strong>,
+    and if Denied, will also predict the most likely <strong>Denial Reason</strong>.
+  </p>
+
+  <h3 style="margin-top: 1.5rem;">Step 1: Upload Claims CSV</h3>
+
+  <form action="{{ url_for('prediction') }}" method="post" enctype="multipart/form-data" style="margin-bottom: 20px;">
+    <input type="file" name="file" accept=".csv" required style="margin-bottom: 10px;">
+    <br>
+    <button type="submit" style="padding: 8px 16px; background-color: #3498db; color: white; border: none; border-radius: 4px; cursor: pointer;">
+      Upload & Predict
+    </button>
+  </form>
+
+  <h3 style="margin-top: 1.5rem;">CSV Format Example:</h3>
+
+  <!-- <p style="font-size: 1.05rem; line-height: 1.7;">
+    The input CSV should contain columns like:
+    <strong>patient_age, patient_gender, specialty, procedure_code, diagnosis_code, claim_amount, insurance_provider</strong>.
+  </p> -->
+
+  <img src="{{ url_for('static', filename='Images/sample_csv.png') }}" alt="CSV Format Example" 
+       style="max-width: 500px; border-radius: 8px; margin-bottom: 30px;">
+
+  {% if download_link %}
+    <h3 style="margin-top: 2rem;">Step 2: Download Results</h3>
+
+    <p style="font-size: 1.05rem; line-height: 1.7;">
+      Your predictions are ready — click below to download:
+    </p>
+
+    <a href="{{ download_link }}" target="_blank" 
+       style="display: inline-block; padding: 10px 20px; background-color: #27ae60; color: white; border-radius: 4px; text-decoration: none;">
+      Download Predicted CSV
+    </a>
+  {% endif %}
+
+  <!-- Show message if exists -->
+{% if message %}
+    <p style="margin-top: 20px; color: {% if '✅' in message %}green{% else %}red{% endif %};">
+        {{ message }}
+    </p>
+{% endif %}
+
+</div>
+
+{% endblock %}
+

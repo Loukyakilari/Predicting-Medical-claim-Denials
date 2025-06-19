@@ -6,24 +6,36 @@
 
                     <p>
                         Healthcare organizations face increasing pressure to maintain financial stability while ensuring high-quality patient care. 
-                        One of the critical challenges in revenue cycle management is claims denial, which significantly affects an organization’s financial health. 
-                        Studies indicate that denied claims account for approximately <strong>5–10% of lost revenue</strong>, with the cost of appealing a single claim 
-                        averaging between <strong>$25 and $117</strong> (Change Healthcare Revenue Cycle Denials Index, 2023).
-                    
-    If an organization appeals 100 denials per month, it may incur costs ranging from <strong>$2,500 to $11,700</strong>, 
-    adding substantial administrative expenses. Beyond financial losses, claim denials contribute to operational inefficiencies, 
-    disrupt cash flow, and can negatively impact patient satisfaction.
-  </p>
+                        One of the critical challenges in revenue cycle management is medical claims denial, which significantly affects an organization’s 
+                        financial performance. Studies indicate that denied claims account for approximately 5–10% of lost revenue,
+                         with the cost of appealing a single claim ranging between $25 and $117 (Change Healthcare Revenue Cycle Denials Index, 2023). 
+                         For organizations handling high volumes of claims, these costs can accumulate rapidly — for example, appealing 100 denials per 
+                         month can lead to additional expenses of $2,500 to $11,700, further straining resources. Beyond direct financial losses, 
+                         claim denials introduce substantial administrative burdens, disrupt cash flow, delay payments, and may lead to reduced
+                          patient satisfaction due to extended billing cycles and unresolved claims. Addressing claim denials effectively requires
+                           proactive strategies and data-driven tools that can help identify issues before claims are submitted.
 
-  <p>
-    This project explores how <strong>machine learning</strong> can be applied to healthcare claim data to predict whether a claim is 
-    likely to be approved or denied. Medical claim denials are a significant source of revenue loss for healthcare providers, 
-    often caused by errors in documentation, coding, or insurance policies.
-  
-    By analyzing synthetic claims data which is synthesized using faker command and training multiple machine learning models, we aim to provide a tool that can 
-    predict not only the claim outcome but also identify the possible reason for denial. This assists healthcare organizations 
-    in reducing claim rejections and improving their revenue cycle efficiency.
-  </p>
+                     <p>
+                      This project explores how machine learning (ML) techniques can be applied to healthcare claim data to predict whether a claim is 
+                      likely to be approved or denied. Denials are often caused by factors such as incomplete documentation, coding errors, eligibility 
+                      issues, and payer policy mismatches. By building a predictive model that analyzes claim details, organizations can identify 
+                      potential denials early and take corrective action to minimize revenue loss.
+                     </p>
+
+                    <p>Due to the sensitive nature of real-world healthcare data and privacy regulations such as HIPAA, synthetic claims
+                       data was generated for this project. The dataset was designed to mimic realistic patterns in medical claims, 
+                       including various providers, specialties, procedure codes, diagnosis codes, insurance providers, 
+                       and known denial reasons.Multiple machine learning models were trained and evaluated on this dataset to predict not only the claim 
+                      outcome (approved/denied) but also to classify the likely reason for denial in the event of a predicted rejection.</p>
+
+              
+
+              
+              <p>The trained machine learning models were integrated into this web application using Flask. The application allows
+                 users to upload a file containing multiple healthcare claims and receive batch predictions for each claim. 
+                 The output provides the predicted claim status (approved or denied), and for denied claims, the likely reason 
+                 for denial. This tool demonstrates how predictive analytics can assist healthcare revenue cycle teams in identifying
+                  high-risk claims before submission and taking corrective actions to reduce denial rates.</p>
 </div>
 {% endblock %}
 

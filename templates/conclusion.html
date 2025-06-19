@@ -1,32 +1,44 @@
 {% extends "base.html" %}
 {% block content %}
 
-<div class="conclusion-section" style="padding: 2rem;">
+<div class="conclusion-section">
 
   <h1 class="eda-title">Conclusion</h1>
 
-  <p style="font-size: 1.05rem; line-height: 1.7;">
+  <p>
     This project successfully demonstrated the application of machine learning techniques to predict medical claim denials before submission, 
     using a synthetic dataset of 10,000 medical claims. Through comprehensive exploratory data analysis (EDA), key patterns and trends were uncovered 
     across denial rates, operational areas, and medical specialties.
-  </p>
-
-  <p style="font-size: 1.05rem; line-height: 1.7;">
     Multiple machine learning models were trained and evaluated for claim status prediction, with the Random Forest classifier achieving the best F1-score 
     and selected as the final model. For denial reason classification, grouped denial categories were used to improve predictive accuracy, with XGBoost 
     emerging as the top-performing model.
-  </p>
-
-  <p style="font-size: 1.05rem; line-height: 1.7;">
     The F1-score was prioritized as the evaluation metric due to the class imbalance present in the data, ensuring the models could accurately capture both 
     Approved and Denied claims while reducing false positives. Both models were deployed within an interactive web interface to support healthcare providers 
     in proactively managing claim denials.
-  </p>
-
-  <p style="font-size: 1.05rem; line-height: 1.7;">
     Overall, this project demonstrates how data-driven tools can be used to enhance revenue cycle management in healthcare settings, improving efficiency 
     and reducing financial risk associated with claim denials.
   </p>
+
+  <h2> Tools and Technologies used</h2>
+              <ul>
+                <li>Programming Language : Python</li>
+                <li>Machine Learning Models : Logistic Regression, Random Forest Classifier, Decision Tree, XGBoost</li>
+                <li>Web Framework : Flask</li>
+                <li>Frontend : HTML, CSS</li>
+                <li>Development Environment : Jupyter Notebook, Visual Studio Code</li>
+                <li>Version Control : GitHub</li>
+              </ul>
+  
+  <h2> Future Considerations</h2>
+  <p>This project demonstrated a proof of concept for using machine learning to predict medical claim denials. 
+    The models were trained on synthetic claim data, which helped simulate real-world scenarios while protecting patient privacy. 
+    However, since synthetic data cannot fully capture the complex relationships, payer rules, and clinical nuances present in 
+    actual healthcare claims, the models' accuracy and F1-scores were lower than expected. Additionally, predicting denial reasons 
+    posed a challenging multi-class classification problem, further impacted by class imbalance. Future work can focus on applying 
+    the models to real-world healthcare claims data, which would provide more accurate validation and improve model performance.
+    Integrating the tool into Electronic Health Record (EHR) or claims submission platforms could provide real-time 
+     decision support, while adding explainable AI methods would improve the transparency and usability of the system for healthcare 
+     teams.</p>
 
 </div>
 

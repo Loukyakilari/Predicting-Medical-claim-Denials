@@ -1,21 +1,37 @@
 .home-banner {
-  height: 400vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: start;
+  min-height: 100vh;
   background-image: url('{{ url_for("static", filename="images/background.png") }}');
   background-size: cover;
   background-position: center;
   background-repeat: no-repeat;
-  display: block;              
-  text-align: center;
-  
+  padding: 60px 20px;
 }
 
+.main-heading {
+  font-size: 5rem;
+  text-align: center;
+  color: #2c3e50;
+  margin-bottom: 100px;
+}
+
+.overview-section {
+  max-width: 800px;
+  text-align: left;
+  background-color: rgba(255, 255, 255, 0.85);
+  padding: 20px;
+  border-radius: 10px;
+}
 
 .project-footer {
-  margin-top: 2rem;
-  padding: 1rem;
-  border-top: 1px solid #ccc;
-  text-align: center;
-  font-size: 1rem;
+  position: absolute;
+  bottom: 20px;
+  right: 20px;
+  text-align: right;
+  font-size: 1.75rem;
   color: #7f8c8d;
 }
 

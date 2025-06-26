@@ -81,7 +81,7 @@
   <p>
     The Random Forest Classifier demonstrated the best F1-Score and overall balanced performance on the test data. 
     It was therefore selected as the final model for predicting the claim status. This model was exported and deployed 
-    as part of the bulk and single prediction web interface.
+    as part of the prediction web interface.
   </p>
 
   <h2>Model for predicting the Denial reason </h2>
@@ -142,10 +142,12 @@
       
     </tbody>
   </table>
-  <p>To improve the model’s ability to accurately predict denial reasons, the original denial reasons were grouped into five major 
-    categories based on their frequency and operational relevance. This grouping helps the model focus on the most impactful patterns 
-    and reduces noise caused by rare categories. After grouping, the model performance improved with higher F1-scores is used for denial reason prediction. 
-    The table below shows the performance of various classifiers after this grouping strategy was applied.</p>
+  <p>To improve the accuracy of denial reason prediction, the five most frequent denial reasons in the dataset were identified. 
+    These top five reasons were retained as individual categories, while all other less frequent reasons were grouped under a 
+    single category labeled “Other.” This grouping was implemented using a simple Python function that checked whether each denial
+     reason was in the top five; if not, it was reassigned to the "Other" category. This strategy reduced the complexity of the 
+     classification task, allowing the model to focus on the most impactful denial patterns. As a result, model performance 
+     improved, showing higher F1-scores.The table below shows the performance of each model after applying this grouping strategy.</p>
     <table style="width: 100%; border-collapse: collapse; text-align: center;">
     <thead>
       <tr style="background-color: #f2f2f2;">
@@ -192,7 +194,7 @@
 
 </p>
 
-<p>Overall, the machine learning models demonstrated good potential in predicting both claim status and denial reasons using the synthetic claims dataset. The Random Forest model was selected for claim approval/denial prediction, while XGBoost was chosen for denial reason classification. These models have been integrated into the project’s web interface for both single and bulk predictions, 
+<p>Overall, the machine learning models demonstrated good potential in predicting both claim status and denial reasons using the synthetic claims dataset. The Random Forest model was selected for claim approval/denial prediction, while XGBoost was chosen for denial reason classification. These models have been integrated into the project’s web interface for predictions, 
     providing a practical decision-support tool to help healthcare providers anticipate and manage claim denials more effectively.</p>
 </div>
 

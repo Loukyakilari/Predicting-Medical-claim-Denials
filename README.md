@@ -19,31 +19,6 @@ This project aims to help healthcare providers reduce revenue loss and administr
 - 🌐 **Flask Web App**: Interactive interface with pages for introduction, EDA, models, and results.
 
 
-## 📁 Project Structure
-
-```
-project-root/
-│
-├── app/                      # Flask application
-│   ├── static/               # CSS and assets
-│   ├── templates/            # HTML templates
-│   ├── model/                # Trained ML models
-│   ├── single_predict.py     # Single prediction logic
-│   ├── bulk_predict.py       # Bulk prediction logic
-│   └── app.py                # Main Flask server
-│
-├── data/                     # Sample dataset and generated inputs
-│   └── medical_claims.csv
-│
-├── notebooks/                # EDA and model training notebooks
-│   └── claim_modeling.ipynb
-│
-├── requirements.txt
-├── Procfile
-├── README.md
-
-```
-
 ## 📌 Dataset Description
 
 | Column               | Description                               |

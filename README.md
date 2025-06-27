@@ -1,4 +1,4 @@
-# 🏥 Predicting Medical Claim Denials Before Submission
+# 🏥 A Machine Learning Framework for Predicting Medical Claim Denial
 
 A Machine Learning Framework for early identification and prevention of insurance claim denials, developed using synthetic healthcare claims data.
 
